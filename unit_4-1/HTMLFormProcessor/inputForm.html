@@ -1,60 +1,183 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>WDV101 Intro HTML and CSS</title>
-
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Program Interest Form — WDV101</title>
 <style>
+  :root{
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --accent:#1e73be;
+    --muted:#6b7280;
+    --radius:8px;
+    --max-w:720px;
+    --gap:14px;
+  }
+  body{
+    margin:0;
+    font-family:Segoe UI, Roboto, Arial, sans-serif;
+    background:linear-gradient(180deg,var(--bg),#e9f0f8);
+    color:#111827;
+    -webkit-font-smoothing:antialiased;
+  }
+  header{
+    text-align:center;
+    padding:28px 16px 10px;
+  }
+  header h1{margin:0;font-size:1.4rem}
+  header p{margin:6px 0 0;color:var(--muted)}
 
-	form	{
-		width:600px;
-		margin:auto;
-		background-color:lightblue;	
-		padding-left: 20px;
-	}
-	
-	form legend	{
-		font-size:larger;
-		text-align:center;
-	}
-	
-	
+  .container{
+    max-width:var(--max-w);
+    margin:20px auto;
+    padding:20px;
+  }
 
+  form.card{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:0 8px 24px rgba(23,31,40,0.06);
+    padding:22px;
+    display:block;
+  }
+  form .legend{
+    display:block;
+    font-weight:600;
+    font-size:1.05rem;
+    color:var(--accent);
+    margin-bottom:8px;
+    text-align:left;
+  }
+  .form-row{
+    display:flex;
+    gap:var(--gap);
+    align-items:center;
+    margin-bottom:12px;
+  }
+  .form-row label{
+    width:180px;
+    font-weight:600;
+    color:#0f172a;
+  }
+  .form-row .input-wrap{flex:1}
+  input[type="text"], input[type="email"], select, textarea{
+    width:100%;
+    padding:10px 12px;
+    border:1px solid #d1d5db;
+    border-radius:6px;
+    font-size:0.95rem;
+    background:white;
+  }
+  textarea{min-height:100px;resize:vertical}
+  .radios, .checkboxes{display:flex;flex-direction:column;gap:6px}
+  .small-note{font-size:0.85rem;color:var(--muted);margin-top:6px}
+
+  .actions{
+    display:flex;gap:12px;justify-content:flex-end;margin-top:18px
+  }
+  button[type="submit"], button[type="reset"]{
+    padding:10px 16px;border-radius:6px;border:0;font-weight:600;cursor:pointer
+  }
+  button[type="submit"]{background:var(--accent);color:white}
+  button[type="reset"]{background:#eef2f7;color:#0f172a}
+
+  @media (max-width:640px){
+    .form-row{flex-direction:column;align-items:stretch}
+    .form-row label{width:auto}
+    .actions{justify-content:stretch}
+  }
 
 </style>
-
 </head>
-
 <body>
-<h1>WDV101 Intro HTML and CSS</h1>
-<h2>UNIT 5 - Lesson 2 Server Side Forms</h2>
-<p>This is an example input form that will demonstrate how a form connects to a server side process.</p>
-<form id="form1" name="form1" method="post" action="formHandler.php">
+  <header>
+    <!-- Top link to return to the course home page -->
+    <div style="text-align:center;margin-bottom:8px"><a href="http://kickshunter.com/WDV341/wdv341.php" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;text-decoration:none">&larr; Back to WDV341 Home</a></div>
+    <h1>WDV101 — Program Interest Form</h1>
+    <p>UNIT 5 — Server Side Forms. Fill out the fields below and click Submit.</p>
+  </header>
 
-  <legend>Example Form</legend>
-  
-  <p>
-  	<label for="first_name">First Name:</label> 
-    <input type="text" name="first_name" id="first_name" />
-  </p>
-  
-  <p>
-  	<label for="last_name">Last Name:</label> 
-    <input type="text" name="last_name" id="last_name" />
-  </p>
-  
-  <p>
-  	<label for="school_name">School Name:</label> 
-    <input type="text" name="school_name" id="school_name" />
-  </p>
-  
-  <p>
-    <input type="submit" name="button" id="button" value="Submit" />
-    <input type="reset" name="button2" id="button2" value="Reset" />
-  </p>
-  
-</form>
+  <div class="container">
+    <!-- The form posts to formHandler.php using POST. 'novalidate' disables browser HTML5 validation (you can remove it to enable native validation) -->
+    <form id="form1" name="form1" class="card" method="post" action="formHandler.php" novalidate>
+      <span class="legend">Contact Information</span>
 
-<p>&nbsp;</p>
+      <div class="form-row">
+        <label for="first_name">First Name</label>
+        <div class="input-wrap"><input type="text" name="first_name" id="first_name" placeholder="Given name" /></div>
+      </div>
+
+      <div class="form-row">
+        <label for="last_name">Last Name</label>
+        <div class="input-wrap"><input type="text" name="last_name" id="last_name" placeholder="Family name" /></div>
+      </div>
+
+      <!-- Customer Email uses type="email" so modern browsers can validate the format. The server still validates/sanitizes the value. -->
+      <div class="form-row">
+        <label for="email">Customer Email</label>
+        <div class="input-wrap"><input type="email" name="customer_email" id="email" placeholder="name@example.com" required aria-required="true" /></div>
+      </div>
+
+      <div class="form-row">
+        <label for="school_name">School Name</label>
+        <div class="input-wrap"><input type="text" name="school_name" id="school_name" placeholder="High school or college" /></div>
+      </div>
+
+      <hr />
+      <span class="legend">Academic Standing</span>
+
+      <!-- Academic standing: radio buttons with clear value attributes used by the server -->
+      <div class="form-row">
+        <label>Current Standing</label>
+        <div class="input-wrap radios" role="radiogroup" aria-labelledby="standing-label">
+          <label><input type="radio" name="standing" value="high_school" /> High School</label>
+          <label><input type="radio" name="standing" value="freshman" /> Freshman</label>
+          <label><input type="radio" name="standing" value="sophomore" /> Sophomore</label>
+        </div>
+      </div>
+
+      <hr />
+      <span class="legend">Program of Interest</span>
+
+      <!-- Program select: values use acronyms (CIS, GD, WD). Server translates these into friendly labels for display. -->
+      <div class="form-row">
+        <label for="program">Program</label>
+        <div class="input-wrap">
+          <select name="program" id="program">
+            <option value="">Default option</option>
+            <option value="CIS">Computer Information Systems</option>
+            <option value="GD">Graphic Design</option>
+            <option value="WD">Web Development</option>
+          </select>
+          <div class="small-note">Choose the program you are most interested in.</div>
+        </div>
+      </div>
+
+      <hr />
+      <span class="legend">Contact Preferences</span>
+
+      <!-- Contact preference checkboxes use an array name (contact_pref[]) so multiple options can be sent and handled as an array on the server. -->
+      <div class="form-row">
+        <label>Preferences</label>
+        <div class="input-wrap checkboxes">
+          <label><input type="checkbox" name="contact_pref[]" value="contact_info" /> Please contact me with program information</label>
+          <label><input type="checkbox" name="contact_pref[]" value="contact_advisor" /> I would like to contact a program advisor</label>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="comments">Comments</label>
+        <div class="input-wrap"><textarea name="comments" id="comments" placeholder="Any questions or additional information..."></textarea></div>
+      </div>
+
+      <!-- Form action buttons: Reset clears fields, Submit posts to formHandler.php -->
+      <div class="actions">
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
 </body>
-
 </html>
