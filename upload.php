@@ -1,4 +1,20 @@
 <?php
+/**
+ * upload.php
+ * 
+ * This file demonstrates a basic reusable ImageUploader class
+ * It's part of the PHP_341 class project. All contents are for educational and informational purposes only
+ * 
+ * @package  PHP_341
+ * @author   Hunter Lovan
+ * @version  1.0.0
+ * @link     http://kickshunter.com/WDV341/wdv341.php
+ */
+/**
+ * Assignment & direction: 5-1: Image File uploader
+ * Create a form page that will locate an image file on your client and use PHP to upload the image to a folder on your server. 
+ * This could be a very useful feature for the final project. 
+*/
 require_once __DIR__ . '/ImageUploader.php';
 
 // Configure uploader (adjust settings as needed per project)
@@ -56,4 +72,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <?php endif; ?>
 <?php endif; ?>
 </body>
+
 </html>
