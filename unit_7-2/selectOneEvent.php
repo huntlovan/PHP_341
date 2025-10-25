@@ -69,7 +69,7 @@ try {
 <div class="container">
   <!-- Top link to return to the course home page -->
     <div style="margin:0 0 12px 0;"><a class="toplink" href="http://kickshunter.com/WDV341/wdv341.php" target="_blank" rel="noopener">&larr; Back to WDV341 Home</a></div>
-    <div style="margin:0 0 12px 0;"><a class="toplink" href="https://github.com/huntlovan/php_341/tree/main/unit_7-2" target="_blank" rel="noopener">&larr; Select Events github repo</a></div>
+    <div style="margin:0 0 12px 0;"><a class="toplink" href="https://github.com/huntlovan/php_341/tree/main/unit_7-2" target="_blank" rel="noopener">&larr; Select One Event github repo</a></div>
 <h2>Event Details</h2>
 
 <?php if (!$loadError && $event): ?>
