@@ -4,7 +4,8 @@
 ob_start();
 require_once __DIR__ . '/dbConnect1.php';
 ob_end_clean();
-
+//1. Your program should pull all rows from the table.
+//Sort in Descending order by product name. 
 $products = [];
 try {
     if (isset($pdo) && $pdo instanceof PDO) {
