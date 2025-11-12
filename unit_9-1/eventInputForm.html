@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event Input Form</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;margin:0;background:#f7f7fb;color:#333}
+    .container{max-width:900px;margin:40px auto;background:#fff;padding:24px 28px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+    h1{margin:0 0 16px;font-weight:600;font-size:28px}
+    p.lead{margin:0 0 24px;color:#555}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .full{grid-column:1 / -1}
+    label{display:block;font-weight:600;margin:4px 0 6px}
+    input[type="text"], input[type="date"], input[type="time"], textarea{width:100%;padding:10px 12px;border:1px solid #cfd6e4;border-radius:8px;font-size:16px;background:#fafbff}
+    textarea{min-height:120px;resize:vertical}
+    .actions{display:flex;gap:12px;align-items:center}
+    button{appearance:none;border:none;background:#4f46e5;color:#fff;padding:12px 18px;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer}
+    button:hover{background:#4338ca}
+    .honeypot{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
+    .note{color:#666;font-size:14px}
+  </style>
+  <!-- Simple, accessible honeypot field to deter bots -->
+</head>
+<div class="container">
+  <!-- Top link to return to the course home page -->
+    <div style="margin:0 0 12px 0;"><a class="toplink" href="http://kickshunter.com/WDV341/wdv341.php" target="_blank" rel="noopener">&larr; Back to WDV341 Home</a></div>
+    <div style="margin:0 0 12px 0;"><a class="toplink" href="https://github.com/huntlovan/php_341/tree/main/unit_9-1" target="_blank" rel="noopener">&larr; Input Form Events and INSERT into database github repo</a></div>
+<h2>Event Listings</h2>
+<body>
+  <div class="container">
+    <h1>Enter Event</h1>
+    <p class="lead">Fill out the form and submit to add a new event.</p>
+  <form method="post" action="insertEvent.php" novalidate>
+      <!-- Honeypot: real users will never fill this; bots often will. -->
+      <div class="honeypot" aria-hidden="true">
+        <label for="website">Leave this field empty</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="full">
+        <label for="events_name">Event Name</label>
+        <input type="text" id="events_name" name="events_name" required>
+      </div>
+
+      <div class="full">
+        <label for="events_description">Description</label>
+        <textarea id="events_description" name="events_description" required></textarea>
+      </div>
+
+      <div>
+        <label for="events_presenter">Presenter</label>
+        <input type="text" id="events_presenter" name="events_presenter" required>
+      </div>
+
+      <div>
+        <label for="events_date">Date</label>
+        <input type="date" id="events_date" name="events_date" required>
+      </div>
+
+      <div>
+        <label for="events_time">Time</label>
+        <input type="time" id="events_time" name="events_time" required>
+      </div>
+
+      <div class="full actions">
+        <button type="submit">Submit Event</button>
+        <span class="note">On submit, the record will be inserted with current date for inserted/updated.</span>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
