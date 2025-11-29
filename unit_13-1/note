@@ -1,0 +1,12 @@
+Create Update Form for an Event
+Create a form that will update a selected event from the selectEvents.php page. 
+
+The form called updateEvent.php should do the following:
+
+The form should use the 'recid' to get the selected event data from the database. 
+It should load the data into the form fields.
+Display the form to the user and allow for changes. 
+Apply the form token method we learned in class to protect your form from CSRF.
+Optionally - add a honeypot to protect your form from bots.
+UPDATE the record in the database.
+Provide a confirmation message upon completion. 
