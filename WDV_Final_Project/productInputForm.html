@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product - Mimi's Bakery</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shared-styles.css">
+    <style>
+        /* Page-specific styles for productInputForm.html */
+        
+        .form-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #484c9b;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        
+        .form-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+            font-size: 15px;
+        }
+        
+        label .required {
+            color: #dc2626;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Open Sans', Arial, sans-serif;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #5965af;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button[type="submit"] {
+            background: linear-gradient(135deg, #484c9b 0%, #5965af 100%);
+            color: white;
+        }
+        
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(72, 76, 155, 0.4);
+        }
+        
+        button[type="reset"] {
+            background: #e5e7eb;
+            color: #333;
+        }
+        
+        button[type="reset"]:hover {
+            background: #d1d5db;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #484c9b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .success {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #059669;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .error {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .hint {
+            font-size: 13px;
+            color: #666;
+            margin-top: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark bg-primary">
+        <ul>
+            <li><a href="index_v2.php">🏠 Home</a></li>
+            <li><a href="baked-products.php">🛍️ View Bakery</a></li>
+            <li><a href="login_v1.php">⚙️ Admin Panel</a></li>
+            <li><a href="logout_v2.php" class="logout">🔓 Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Animated Banner -->
+    <div class="banner">
+        <div class="banner-content">
+            <span class="banner-icon">🎂</span>
+            <span class="banner-text">Fresh Daily! All items baked fresh with love by Mimi</span>
+            <span class="banner-icon">🍪</span>
+            <a href="baked-products.php" class="banner-link">Order Now</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <h2 class="pb-4 mb-4 fst-italic">
+            Add New Product
+        </h2>
+        <p>
+            Enter the details for your new bakery product below
+        </p>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+        <a href="login_v1.php" class="back-link">← Back to Admin Panel</a>
+        
+        <h1>➕ Add New Product</h1>
+        <p class="form-subtitle">Enter the details for the new bakery product</p>
+        
+        <form action="insertProduct.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="product_name">Product Name <span class="required">*</span></label>
+                <input type="text" id="product_name" name="product_name" required placeholder="e.g., Chocolate Chip Cookies">
+            </div>
+            
+            <div class="form-group">
+                <label for="product_description">Product Description <span class="required">*</span></label>
+                <textarea id="product_description" name="product_description" required placeholder="Describe the product..."></textarea>
+                <div class="hint">Provide a detailed description of the product</div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="product_price">Price ($) <span class="required">*</span></label>
+                    <input type="number" id="product_price" name="product_price" step="0.01" min="0" required placeholder="0.00">
+                </div>
+                
+                <div class="form-group">
+                    <label for="product_inStock">Stock Quantity <span class="required">*</span></label>
+                    <input type="number" id="product_inStock" name="product_inStock" min="0" required placeholder="0">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="product_image">Image Filename <span class="required">*</span></label>
+                <input type="text" id="product_image" name="product_image" required placeholder="e.g., chocolate-cookies.jpg">
+                <div class="hint">Enter the filename of the image (must be uploaded to productImages/ folder)</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="product_status">Product Status</label>
+                <select id="product_status" name="product_status">
+                    <option value="">-- Select Status --</option>
+                    <option value="New">New</option>
+                    <option value="Featured">Featured</option>
+                    <option value="Best Seller">Best Seller</option>
+                    <option value="Limited Edition">Limited Edition</option>
+                    <option value="Seasonal">Seasonal</option>
+                </select>
+                <div class="hint">Optional: Select a special status for this product</div>
+            </div>
+            
+            <div class="button-group">
+                <button type="submit" name="submit">💾 Add Product</button>
+                <button type="reset">🔄 Clear Form</button>
+            </div>
+        </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Mimi's Bakery - Made with ❤️</p>
+        <p>This website is for educational purposes only.</p>
+    </footer>
+</body>
+</html>
