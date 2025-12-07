@@ -1,7 +1,15 @@
 <?php
-/**
+/*******************************************************
+ * @package  wdv341_final_project
+ * @author   Hunter Lovan
+ * @version  1.0.0
+ * @link     http://kickshunter.com/WDV341/index_v1.php
+ * *****************************************************
  * ContactController.php - Controller for contact form processing
  * Handles form validation and email sending
+ * 
+ * Dependencies: called from contactForm.php (work in progress) and depends on emailHelper.php
+ *
  */
 
 class ContactController {
