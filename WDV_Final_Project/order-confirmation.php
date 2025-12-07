@@ -1,4 +1,16 @@
 <?php
+/*******************************************************
+ * @package  wdv341_final_project
+ * @author   Hunter Lovan
+ * @version  1.0.0
+ * @link     http://kickshunter.com/WDV341/index_v1.php
+ * *****************************************************
+ * order-confirmation.php - VIEW for order confirmation display
+ * 
+ * Dependencies: called from baked-products.php
+ * ToDo: load Mimi's Bakery phone and web site from a configuration data storage or file.
+ */
+
 session_start();
 
 // Check if order success data exists
@@ -17,7 +29,7 @@ unset($_SESSION['order_success']);
 
 <head>
     <meta charset="utf-8">
-    <title>Order Confirmation - DMACC Electronics Store</title>
+    <title>Order Confirmation - Mimi Bakery Store (www.mimisBakery.com)</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -149,7 +161,7 @@ unset($_SESSION['order_success']);
 
         <div class="print-btn" style="text-align:center;margin-top:30px;padding-top:30px;border-top:1px solid #eee">
             <p style="color:#666;font-size:14px">
-                Questions about your order? Contact us at support@dmacc-store.com or call (555) 123-4567
+                Questions about your order? Contact us at mimibakery@gmail.com or call (515) 453-4040 or use our web site at www.mimisBakery.com
             </p>
         </div>
     </div>
