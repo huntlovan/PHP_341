@@ -1,10 +1,13 @@
 <?php
-//<?php
-//require_once dirname(__DIR__) . '/config/config.php';
-//header('Location: ' . APP_URL . '/auth/login');
-//exit;
-
-// login.php - Self-posting login page with session management
+/*******************************************************
+ * @package  wdv341_final_project - Admin Module
+ * @author   Hunter Lovan
+ * @version  1.0.0
+ * @link     http://kickshunter.com/WDV341/index_v1.php
+ * *****************************************************
+ * login_v1.php - Self-posting login page with session management
+ * ToDo: implement the MVC design pattern
+ */
 ob_start();
 require_once __DIR__ . '/dbConnect1.php';
 ob_end_clean();
