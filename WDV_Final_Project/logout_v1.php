@@ -1,5 +1,13 @@
 <?php
-// logout.php - Destroys the session and redirects to login page
+/*******************************************************
+ * @package  wdv341_final_project - Admin Module
+ * @author   Hunter Lovan
+ * @version  1.0.0
+ * @link     http://kickshunter.com/WDV341/index_v1.php
+ * *****************************************************
+ * logout_v1.php - logout.php - Destroys the session and redirects to login page
+ * ToDo: implement the MVC design pattern, and move the admin module to its own folder
+ */
 session_start();
 
 // Unset all session variables
@@ -37,4 +45,5 @@ session_destroy();
         <a href="login_v1.php">Return to Login</a>
     </div>
 </body>
+
 </html>
