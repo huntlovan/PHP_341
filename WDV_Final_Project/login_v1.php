@@ -6,7 +6,7 @@
  * @link     http://kickshunter.com/WDV341/index_v1.php
  * *****************************************************
  * login_v1.php - Self-posting login page with session management
- * ToDo: implement the MVC design pattern
+ * ToDo: implement the MVC design pattern, and move the admin module to its own folder.
  */
 ob_start();
 require_once __DIR__ . '/dbConnect1.php';
