@@ -1,6 +1,12 @@
 <?php
-/**
+/*******************************************************
+ * @package  wdv341_final_project
+ * @author   Hunter Lovan
+ * @version  1.0.0
+ * @link     http://kickshunter.com/WDV341/index_v1.php
+ * *****************************************************
  * baked-products.php - VIEW for product catalog display
+ * 
  * Implements MVC: Uses ProductModel (data) and ProductController (logic)
  * ToDo: see if any of the HTML can be moved to a separate file for easier maintenance.
  */
