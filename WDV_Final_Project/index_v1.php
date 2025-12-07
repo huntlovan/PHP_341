@@ -1,10 +1,35 @@
 <?php
-// index.php - Landing page with main navigation
+/*******************************************************
+ * @package  wdv341_final_project
+ * @author   Hunter Lovan
+ * @version  1.0.0
+ * @link     http://kickshunter.com/WDV341/index_v1.php
+ * *****************************************************
+ * index_v1.php - Landing page with main navigation
+ * 
+ * Dependencies: called from index.html (work in progress)
+ * ToDo: load Mimi's Bakery phone and web site from a configuration data storage or file.
+ */
 session_start();
 
 // Check if user is logged in
 $isLoggedIn = isset($_SESSION['validUser']) && $_SESSION['validUser'] === true;
 $username = $_SESSION['username'] ?? 'Guest';
+
+// Check for contact form success message
+$contactSuccess = false;
+$contactMessage = '';
+$contactData = [];
+
+if (isset($_GET['contact_success']) && $_GET['contact_success'] == 1) {
+    $contactSuccess = true;
+    $contactMessage = $_SESSION['contact_message'] ?? 'Your message has been sent successfully!';
+    $contactData = $_SESSION['contact_data'] ?? [];
+    
+    // Clear session data
+    unset($_SESSION['contact_message']);
+    unset($_SESSION['contact_data']);
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -119,6 +144,50 @@ $username = $_SESSION['username'] ?? 'Guest';
             font-weight: 600;
         }
         
+        .contact-success {
+            background: #ecfdf5;
+            border: 2px solid #10b981;
+            color: #065f46;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+        
+        .contact-success h3 {
+            margin: 0 0 15px;
+            font-size: 24px;
+            color: #065f46;
+        }
+        
+        .contact-success p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        
+        .contact-details {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        
+        .contact-detail-row {
+            padding: 8px 0;
+            border-bottom: 1px solid #d1fae5;
+        }
+        
+        .contact-detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .contact-detail-label {
+            font-weight: 600;
+            color: #047857;
+            margin-right: 8px;
+        }
+        
         .action-section {
             display: flex;
             justify-content: center;
@@ -177,6 +246,7 @@ $username = $_SESSION['username'] ?? 'Guest';
         <ul>
             <li><a href="index_v1.php">🏠 Home</a></li>
             <li><a href="baked-products.php">🛍️ View Bakery</a></li>
+            <li><a href="contactForm.php">📬 Contact Us</a></li>
             <?php if ($isLoggedIn): ?>
                 <li><a href="login_v1.php">⚙️ Admin Panel</a></li>
                 <li><a href="logout_v1.php" class="logout">🔓 Logout</a></li>
@@ -211,6 +281,45 @@ $username = $_SESSION['username'] ?? 'Guest';
 
     <!-- Main Content -->
     <div class="container">
+        <?php if ($contactSuccess): ?>
+            <div class="contact-success">
+                <h3>✅ Message Sent Successfully!</h3>
+                <p><?php echo htmlspecialchars($contactMessage); ?></p>
+                
+                <?php if (!empty($contactData)): ?>
+                <div class="contact-details">
+                    <strong style="color: #065f46;">Your Submission:</strong>
+                    
+                    <div class="contact-detail-row">
+                        <span class="contact-detail-label">Name:</span>
+                        <span><?php echo htmlspecialchars($contactData['fullName'] ?? 'N/A'); ?></span>
+                    </div>
+                    
+                    <div class="contact-detail-row">
+                        <span class="contact-detail-label">Email:</span>
+                        <span><?php echo htmlspecialchars($contactData['email'] ?? 'N/A'); ?></span>
+                    </div>
+                    
+                    <?php if (!empty($contactData['phone'])): ?>
+                    <div class="contact-detail-row">
+                        <span class="contact-detail-label">Phone:</span>
+                        <span><?php echo htmlspecialchars($contactData['phone']); ?></span>
+                    </div>
+                    <?php endif; ?>
+                    
+                    <div class="contact-detail-row">
+                        <span class="contact-detail-label">Subject:</span>
+                        <span><?php echo htmlspecialchars($contactData['subject'] ?? 'N/A'); ?></span>
+                    </div>
+                </div>
+                <?php endif; ?>
+                
+                <p style="margin-top: 20px; font-size: 14px; color: #047857;">
+                    We'll get back to you as soon as possible!
+                </p>
+            </div>
+        <?php endif; ?>
+        
         <?php if ($isLoggedIn): ?>
             <div class="login-message">
                 ✅ Welcome back, <?php echo htmlspecialchars($username); ?>! You have access to all features.
@@ -219,22 +328,20 @@ $username = $_SESSION['username'] ?? 'Guest';
 
         <div class="action-section">
             <div class="browse">
-                <h2>Ready to Order Bakery</h2>
+                <h2>Ready to Order</h2>
                 <p>Explore our delicious selection of freshly baked cakes, cookies, and treats made with love by Mimi.</p>
                 <a href="baked-products.php" class="cta-button">Browse Our Bakery Items →</a>
             </div>
 
             <div class="order">
-                <h2>How to Order Bakery</h2>
-                <p>How to place your order for Mimi's famous baked goods and experience homemade quality delivered to you.</p>
-                <a href="orderProducts.php" class="cta-button">How →</a>
+                <h2>How to Order</h2>
+                <p>Place your order for Mimi's famous baked goods and experience homemade quality delivered to you.</p>
+                <a href="orderProducts.php" class="cta-button">Step by Step →</a>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>This website is for educational purposes only.</p>
-    </footer>
-</body>
-</html>
+<?php
+// Include footer
+include __DIR__ . '/includes/footer.php';
+?>
