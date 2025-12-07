@@ -1,5 +1,13 @@
 <?php
-// updateProducts.php - Display, update, and delete products
+/*******************************************************
+ * @package  wdv341_final_project - Admin Module
+ * @author   Hunter Lovan
+ * @version  1.0.0
+ * @link     http://kickshunter.com/WDV341/index_v1.php
+ * *****************************************************
+ * updateProducts.php - Display, update, and delete products
+ * ToDo: implement the MVC design pattern, and move the admin module to its own folder.
+ */
 session_start();
 
 // Check if user is logged in
