@@ -1,7 +1,13 @@
 <?php
-/**
+/*******************************************************
+ * @package  wdv341_final_project - Admin Module
+ * @author   Hunter Lovan
+ * @version  1.0.0
+ * @link     http://kickshunter.com/WDV341/index_v1.php
+ * *****************************************************
  * ProductController.php - Controller for product-related business logic
  * Handles product display, order validation, and order processing
+ * ToDo: implement the MVC design pattern, and move the admin module to its own folder.
  */
 
 class ProductController {
@@ -174,3 +180,4 @@ class ProductController {
         ];
     }
 }
+
