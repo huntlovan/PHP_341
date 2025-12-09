@@ -39,7 +39,7 @@ A full-featured bakery e-commerce website built with PHP, implementing MVC archi
 
 - I used Claude Sonnet 4.5 to help with this README document, where documentation is the specialty of this tool. 
 - I plan to enhance this application with better user experiences, features, and lean architecture.
-- I hoope 
+- I hope you can learn from what I got here, the good and the bad.
 ---
 
 ## ✨ Features
@@ -678,5 +678,6 @@ For questions about this educational project, please refer to the documentation 
 ---
 
 **Built with ❤️ for WDV341 Final Project**
+
 
 
