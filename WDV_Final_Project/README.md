@@ -37,8 +37,9 @@ A full-featured bakery e-commerce website built with PHP, implementing MVC archi
 - Mimi (inspiration for bakery theme)
 - PHP and MySQL communities
 
-- I used Claude Sonnet 4.5 to help with this README document, where documentation is its speciality. 
+- I used Claude Sonnet 4.5 to help with this README document, where documentation is the specialty of this tool. 
 - I plan to enhance this application with better user experiences, features, and lean architecture.
+- I hoope 
 ---
 
 ## ✨ Features
@@ -677,3 +678,4 @@ For questions about this educational project, please refer to the documentation 
 ---
 
 **Built with ❤️ for WDV341 Final Project**
+
